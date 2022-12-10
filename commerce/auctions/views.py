@@ -160,3 +160,16 @@ def addtowishlist(request,id):
     return HttpResponseRedirect(reverse( "viewwishlist"))
 
 
+def categories(request):
+    distinct_categories = Listing.objects.all().values_list('category', flat=True).distinct()
+    # print(distinct_categories)
+    return render(request,'auctions/categories.html',{'distinct_categories':distinct_categories})
+    
+
+
+
+def particularcategory(request,category):
+    objects = Listing.objects.filter(category=category)
+    print(objects)
+    return render(request,'auctions/allcategoryitems.html',{'allcategoryitems':objects})
+    

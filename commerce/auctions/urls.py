@@ -13,6 +13,8 @@ urlpatterns = [
     path("addbid/<int:id>", views.addbid, name="addbid"),
     path("addtowishlist/<int:id>", views.addtowishlist, name="addtowishlist"),
     path("viewwishlist", views.viewwishlist, name="viewwishlist"),
+    path("categories", views.categories, name="categories"),
+    path("category/<str:category>", views.particularcategory, name="particularcategory"),
     
 ]
 
