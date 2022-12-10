@@ -1,0 +1,72 @@
+{% extends "auctions/layout.html" %} {% block body %}
+
+<h2>Add New Listing</h2>
+
+{% comment %} {% if message %}
+<div>{{ message }}</div>
+{% endif %} {% endcomment %} {% comment %}
+<div class="form-outline mb-4">
+  {{ form.title.errors }}
+
+  <label class="form-label" for="{{ form.title.id_for_label }}">Title</label>
+  <br />
+  {{ form.title }}
+</div>
+{% endcomment %}
+
+<form action="{% url 'addlisting' %}" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    {{ form.title.errors }}
+    <input
+      class="form-control"
+      type="text"
+      name="title"
+      placeholder="Title"
+      for="{{ form.title.id_for_label }}"
+    />
+  </div>
+  <div class="form-group">
+    {{ form.price.errors }}
+    <input
+      class="form-control"
+      type="integer"
+      name="price"
+      placeholder="Price"
+      for="{{ form.price.id_for_label }}"
+    />
+  </div>
+  <div class="form-group">
+    {{ form.category.errors }}
+    <input
+      class="form-control"
+      type="text"
+      name="category"
+      placeholder="Category"
+      for="{{ form.category.id_for_label }}"
+    />
+  </div>
+  <div class="form-group">
+    {{ form.image_url.errors }}
+    <input
+      class="form-control"
+      type="url"
+      name="image_url"
+      placeholder="Image Url"
+      for="{{ form.image_url.id_for_label }}"
+    />
+  </div>
+  <div class="form-group">
+    {{ form.description.errors }}
+    <input
+      class="form-control"
+      type="text"
+      name="description"
+      placeholder="Description"
+      for="{{ form.description.id_for_label }}"
+    />
+  </div>
+  <input class="btn btn-primary" type="submit" value="Add" />
+</form>
+
+{% endblock %}

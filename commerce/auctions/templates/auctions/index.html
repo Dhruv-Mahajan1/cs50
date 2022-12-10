@@ -1,0 +1,35 @@
+{% extends "auctions/layout.html" %} {% block body %}
+<h2>Active Listings</h2>
+{% for listings in activelistings%}
+
+<div class="col-lg-8 mx-auto list-group shadow p-2">
+  <li class="list-group-item">
+    <!-- Custom content-->
+
+    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+      <div class="media-body order-2 order-lg-1">
+        <h5 class="mt-0 font-weight-bold mb-2">{{listings.title}}</h5>
+        <p class="font-italic text-muted mb-0 small">
+          {{listings.description}}
+        </p>
+        <p class="font-italic text-muted mb-0 small">
+          Created: {{listings.dateCreated}}
+        </p>
+        <div class="d-flex align-items-center justify-content-between mt-1">
+          <h6 class="font-weight-bold my-2">{{listings.price}}</h6>
+        </div>
+      </div>
+      <img
+        src="{{listings.image_url}}"
+        alt="Generic placeholder image"
+        width="200"
+        class="ml-lg-5 order-1 order-lg-2"
+      />
+    </div>
+    <a class="btn btn-info pull-right" href="{% url 'listing' id=listings.id %}"
+      >View More</a
+    >
+    <!-- End -->
+  </li>
+</div>
+{% endfor %} {% endblock %}
