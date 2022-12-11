@@ -1,6 +1,6 @@
 {% extends "auctions/layout.html" %} {% block body %}
-<h2>Your Wishlist</h2>
-{% for listings in wishlist%}
+<h2>Your Bought items</h2>
+{% for listings in boughtitems%}
 
 <div class="col-lg-8 mx-auto list-group shadow p-2">
   <li class="list-group-item">
@@ -28,11 +28,6 @@
     </div>
     <a class="btn btn-info pull-right" href="{% url 'listing' id=listings.id %}"
       >View More</a
-    >
-    <a
-      class="btn btn-info pull-right"
-      href="{% url 'detelewishlistitem' id=listings.id %}"
-      >Delete</a
     >
     <!-- End -->
   </li>

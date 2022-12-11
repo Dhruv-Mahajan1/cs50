@@ -24,7 +24,7 @@
           <p>{{listing.description}}</p>
           <h2 class="mt-5">${{listing.price}}</h2>
 
-          {% if user.is_authenticated%}
+          {% if user.is_authenticated and not owner%}
 
           <a
             class="btn btn-dark btn-rounded mr-1"
@@ -34,12 +34,24 @@
             >Add to Wishlist <i class="fa fa-shopping-cart"></i
           ></a>
 
+          {% endif %} {% if user.is_authenticated and owner and abled%}
+
+          <a
+            class="btn btn-dark btn-rounded mr-1"
+            data-toggle="tooltip"
+            data-original-title="Add to cart"
+            href="{% url 'closebid' id=listing.id %}"
+            >Close Bid</a
+          >
+
           {% endif %}
         </div>
-        {% if user.is_authenticated %}
+        {% if not abled %}
+        <p>{{boughtby}} the winner for the bid</p>
+        {% endif %} {% if user.is_authenticated and not owner and abled%}
         <form
           class="d-flex flex-row justify-content-center"
-          ,action="{% url 'addbid' id=listing.id %}"
+          action="{% url 'addbid' id=listing.id %}"
           method="post"
         >
           {% csrf_token %}
@@ -55,6 +67,7 @@
           </div>
           <input class="btn btn-primary mt-2 mb-5" type="submit" value="Bid" />
         </form>
+
         {% endif %}
         <div class="col-lg-12 col-md-12 col-sm-12">
           <h3 class="box-title mt-5">Bids</h3>

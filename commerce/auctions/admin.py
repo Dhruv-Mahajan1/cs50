@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User,Listing,Bids,Comments,Wishlist
+from .models import User,Listing,Bids,Comments,Wishlist,Winner
 
 # class UserAdmin(admin.ModelAdmin):
 #     list_display = ("id", )
@@ -10,3 +10,4 @@ admin.site.register(Listing)
 admin.site.register(Bids)
 admin.site.register(Comments)
 admin.site.register(Wishlist)
+admin.site.register(Winner)

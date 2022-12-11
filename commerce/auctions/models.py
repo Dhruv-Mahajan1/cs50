@@ -18,6 +18,7 @@ class Listing(models.Model):
     category=models.CharField(max_length=80)
     is_active=models.BooleanField(default=True)
     
+    
 
 class Bids(models.Model):
     id=models.AutoField(primary_key=True)
@@ -39,3 +40,7 @@ class Wishlist(models.Model):
     listing_id=models.ForeignKey(Listing,on_delete=models.CASCADE)
 
 
+class Winner(models.Model):
+    listingid = models.ForeignKey(Listing,on_delete=models.CASCADE)
+    bougthby_id = models.ForeignKey(User ,on_delete=models.CASCADE)
+    winprice = models.IntegerField()
